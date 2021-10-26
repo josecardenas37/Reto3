@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import tutoria.domingo.modelo.Cabanas;
+import tutoria.domingo.modelo.Cabin;
 import tutoria.domingo.servicios.ServiciosCabanas;
 
 /**
@@ -40,31 +40,31 @@ public class WebCabanas {
     @Autowired
     private ServiciosCabanas servicio;
     @GetMapping("all")
-    public List <Cabanas> getLacabana(){
+    public List <Cabin> getLacabana(){
         return servicio.getAll();
     }
     
     @GetMapping("/{id}")
-    public Optional<Cabanas> getLacabana(@PathVariable("id") int idCabanas) {
+    public Optional<Cabin> getLacabana(@PathVariable("id") int idCabanas) {
         return servicio.getLacabana(idCabanas);
         
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Cabanas save(@RequestBody Cabanas orthesis) {
-        return servicio.save(orthesis);
+    public Cabin save(@RequestBody Cabin cabin) {
+        return servicio.save(cabin);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Cabanas update(@RequestBody Cabanas cabanas) {
-        return servicio.update(cabanas);
+    public Cabin update(@RequestBody Cabin cabin) {
+        return servicio.update(cabin);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int ortesisId) {
-        return servicio.deleteCabanas(ortesisId);
+    public boolean delete(@PathVariable("id") int cabinId) {
+        return servicio.deleteCabin(cabinId);
     }
     
 }

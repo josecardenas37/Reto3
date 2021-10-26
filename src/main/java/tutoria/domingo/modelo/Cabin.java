@@ -22,49 +22,66 @@ import javax.persistence.Table;
  * @author USUARIO
  */
 @Entity
-@Table(name = "cabanas")
-public class Cabanas implements Serializable{
+@Table(name = "cabin")
+public class Cabin implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
     private String brand;
     private Integer rooms;
+    private String description;
     @ManyToOne
     @JoinColumn(name="categoryid")
     @JsonIgnoreProperties("cabins")
     private Categoria category;
-    private String name;
-    private String description;
-
-  
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cabanas")
-    @JsonIgnoreProperties({"cabanas","client"})
+      
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cabin")
+    @JsonIgnoreProperties({"cabin","client"})
     private List<Mensaje> messages;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cabanas")
-    @JsonIgnoreProperties({"cabanas","message"})
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cabin")
+    @JsonIgnoreProperties({"cabin","message"})
     public List<Reservacion> reservations;
-
+/**
+ * 
+ * @return 
+ */
     public Integer getId() {
         return id;
     }
-
+/**
+ * 
+ * @param id 
+ */
     public void setId(Integer id) {
         this.id = id;
     }
-
+/**
+ * 
+ * @return 
+ */
     public String getBrand() {
         return brand;
     }
-
+/**
+ * 
+ * @param brand 
+ */
     public void setBrand(String brand) {
         this.brand = brand;
     }
-
+/**
+ * 
+ * @return 
+ */
     public Integer getRooms() {
         return rooms;
     }
-
+/**
+ * 
+ * @param rooms 
+ */
     public void setRooms(Integer rooms) {
         this.rooms = rooms;
     }
@@ -72,39 +89,66 @@ public class Cabanas implements Serializable{
     public Categoria getCategory() {
         return category;
     }
-
+/**
+ * 
+ * @param category 
+ */
     public void setCategory(Categoria category) {
         this.category = category;
     }
-
+/**
+ * 
+ * @return 
+ */
     public String getName() {
         return name;
     }
-
+/**
+ * 
+ * @param name 
+ */
     public void setName(String name) {
         this.name = name;
     }
-
+/**
+ * 
+ * @return 
+ */
     public String getDescription() {
         return description;
     }
-
+/**
+ * 
+ * @param description 
+ */
     public void setDescription(String description) {
         this.description = description;
     }
-
+/**
+ * 
+ * @return 
+ */
     public List<Mensaje> getMessages() {
         return messages;
     }
-
+/**
+ * 
+ * @param messages 
+ */
     public void setMessages(List<Mensaje> messages) {
         this.messages = messages;
     }
-
+/**
+ * 
+ * @return 
+ */
     public List<Reservacion> getReservations() {
         return reservations;
     }
-
+/**
+ * 
+ * @param reservations 
+ */
     public void setReservations(List<Reservacion> reservations) {
         this.reservations = reservations;
     }

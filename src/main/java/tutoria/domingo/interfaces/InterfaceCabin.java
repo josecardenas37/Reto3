@@ -5,12 +5,12 @@
 package tutoria.domingo.interfaces;
 
 import org.springframework.data.repository.CrudRepository;
-import tutoria.domingo.modelo.Cabanas;
+import tutoria.domingo.modelo.Cabin;
 
 /**
  *
  * @author USUARIO
  */
-public interface InterfaceOrtesis extends CrudRepository<Cabanas,Integer> {
+public interface InterfaceCabin extends CrudRepository<Cabin,Integer> {
     
 }

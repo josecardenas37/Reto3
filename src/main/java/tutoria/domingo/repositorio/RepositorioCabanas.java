@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import tutoria.domingo.interfaces.InterfaceOrtesis;
 import tutoria.domingo.modelo.Mensaje;
-import tutoria.domingo.modelo.Cabanas;
+import tutoria.domingo.modelo.Cabin;
+import tutoria.domingo.interfaces.InterfaceCabin;
 
 /**
  *
@@ -19,22 +19,22 @@ import tutoria.domingo.modelo.Cabanas;
 @Repository
 public class RepositorioCabanas {
      @Autowired
-    private InterfaceOrtesis crud;
+    private InterfaceCabin crud;
     
 
-    public List<Cabanas> getAll(){
-        return (List<Cabanas>) crud.findAll();       
+    public List<Cabin> getAll(){
+        return (List<Cabin>) crud.findAll();       
     }
     
-    public Optional <Cabanas> getLacabana(int id){
+    public Optional <Cabin> getLacabana(int id){
         return crud.findById(id);
     }
     
-    public Cabanas save(Cabanas cabanas){
-        return crud.save(cabanas);
+    public Cabin save(Cabin cabin){
+        return crud.save(cabin);
     }
-      public void delete(Cabanas cabanas){
-        crud.delete(cabanas);
+      public void delete(Cabin cabin){
+        crud.delete(cabin);
     }
     
     

@@ -43,20 +43,20 @@ public class ServiciosReservacion {
     
     public Reservacion update(Reservacion reservacion){
         if(reservacion.getIdReservation()!=null){
-            Optional<Reservacion> e= metodosCrud.getReservation(reservacion.getIdReservation());
-            if(!e.isEmpty()){
+            Optional<Reservacion> upd= metodosCrud.getReservation(reservacion.getIdReservation());
+            if(!upd.isEmpty()){
 
                 if(reservacion.getStartDate()!=null){
-                    e.get().setStartDate(reservacion.getStartDate());
+                    upd.get().setStartDate(reservacion.getStartDate());
                 }
                 if(reservacion.getDevolutionDate()!=null){
-                    e.get().setDevolutionDate(reservacion.getDevolutionDate());
+                    upd.get().setDevolutionDate(reservacion.getDevolutionDate());
                 }
                 if(reservacion.getStatus()!=null){
-                    e.get().setStatus(reservacion.getStatus());
+                    upd.get().setStatus(reservacion.getStatus());
                 }
-                metodosCrud.save(e.get());
-                return e.get();
+                metodosCrud.save(upd.get());
+                return upd.get();
             }else{
                 return reservacion;
             }

@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tutoria.domingo.modelo.Cabanas;
+import tutoria.domingo.modelo.Cabin;
 import tutoria.domingo.repositorio.RepositorioCabanas;
 
 /**
@@ -21,19 +21,19 @@ public class ServiciosCabanas {
      @Autowired
     private RepositorioCabanas metodosCrud;
     
-    public List<Cabanas> getAll(){
+    public List<Cabin> getAll(){
         return metodosCrud.getAll();
     }
     
-    public Optional<Cabanas> getLacabana(int idLacabana){
+    public Optional<Cabin> getLacabana(int idLacabana){
         return metodosCrud.getLacabana(idLacabana);
     }
     
-    public Cabanas save(Cabanas lacabana){
+    public Cabin save(Cabin lacabana){
         if(lacabana.getId()==null){
             return metodosCrud.save(lacabana);
         }else{
-            Optional<Cabanas> evt=metodosCrud.getLacabana(lacabana.getId());
+            Optional<Cabin> evt=metodosCrud.getLacabana(lacabana.getId());
             if(evt.isEmpty()){
                 return metodosCrud.save(lacabana);
             }else{
@@ -41,37 +41,37 @@ public class ServiciosCabanas {
             }
         }
     }
-    public Cabanas update(Cabanas cabanas){
-        if(cabanas.getId()!=null){
-            Optional<Cabanas> e=metodosCrud.getLacabana(cabanas.getId());
+    public Cabin update(Cabin cabin){
+        if(cabin.getId()!=null){
+            Optional<Cabin> e=metodosCrud.getLacabana(cabin.getId());
             if(!e.isEmpty()){
-                if(cabanas.getName()!=null){
-                    e.get().setName(cabanas.getName());
+                if(cabin.getName()!=null){
+                    e.get().setName(cabin.getName());
                 }
-                if(cabanas.getBrand()!=null){
-                    e.get().setBrand(cabanas.getBrand());
+                if(cabin.getBrand()!=null){
+                    e.get().setBrand(cabin.getBrand());
                 }
-                if(cabanas.getRooms()!=null){
-                    e.get().setRooms(cabanas.getRooms());
+                if(cabin.getRooms()!=null){
+                    e.get().setRooms(cabin.getRooms());
                 }
-                if(cabanas.getDescription()!=null){
-                    e.get().setDescription(cabanas.getDescription());
+                if(cabin.getDescription()!=null){
+                    e.get().setDescription(cabin.getDescription());
                 }
-                if(cabanas.getCategory()!=null){
-                    e.get().setCategory(cabanas.getCategory());
+                if(cabin.getCategory()!=null){
+                    e.get().setCategory(cabin.getCategory());
                 }
                 metodosCrud.save(e.get());
                 return e.get();
             }else{
-                return cabanas;
+                return cabin;
             }
         }else{
-            return cabanas;
+            return cabin;
         }
     }
 
 
-    public boolean deleteCabanas(int cabinId) {
+    public boolean deleteCabin(int cabinId) {
         Boolean aBoolean = getLacabana(cabinId).map(cabin -> {
             metodosCrud.delete(cabin);
             return true;
