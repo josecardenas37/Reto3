@@ -26,10 +26,25 @@ import javax.persistence.Table;
 public class Cabin implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /**
+     * 
+     */
     private Integer id;
+    /**
+     * 
+     */
     private String name;
+    /**
+     * 
+     */
     private String brand;
+    /**
+     * 
+     */
     private Integer rooms;
+    /**
+     * 
+     */
     private String description;
     @ManyToOne
     @JoinColumn(name="categoryid")

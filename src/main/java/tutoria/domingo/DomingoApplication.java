@@ -1,4 +1,4 @@
-//Categoria, Mensaje, Reservacion, Cliente , Ortesis
+//Categoria, Mensaje, Reservacion, Cliente , Cabin
 //1.Modelo o Entidad
 //2.Interface
 //3.Repositorio

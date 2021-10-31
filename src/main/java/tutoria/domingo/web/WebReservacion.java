@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import tutoria.domingo.modelo.Reservacion;
+import tutoria.domingo.reportes.ContadorClientes;
+import tutoria.domingo.reportes.StatusReservas;
 import tutoria.domingo.servicios.ServiciosReservacion;
 
 /**
@@ -57,4 +59,20 @@ public class WebReservacion {
     public boolean delete(@PathVariable("id") int reservationId) {
         return servicio.deleteReservation(reservationId);
     }
+      @GetMapping("/report-status")
+    public StatusReservas getReservas(){
+        return servicio.getReporteStatusReservaciones();
+    }
+    
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservacion> getReservasTiempo (@PathVariable("dateOne")String dateOne, @PathVariable("dateTwo")String dateTwo){
+        return servicio.getReportesTiempoReservaciones(dateOne, dateTwo);
+    }
+    
+    @GetMapping("/report-clients")
+    public List<ContadorClientes> getClientes(){
+        return servicio.servicioTopClientes();
+    
+    }
+    
 }
